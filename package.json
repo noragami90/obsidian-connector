@@ -1,6 +1,6 @@
 {
   "name": "vault-connector-for-obsidian",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local MCP connector for Obsidian — read, write and search Markdown notes in any vault directly on disk.",
   "type": "module",
   "license": "MIT",

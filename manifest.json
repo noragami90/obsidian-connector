@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "vault-connector-for-obsidian",
   "display_name": "Vault Connector for Obsidian",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Read, write and search your Obsidian vault from Claude — works directly with Markdown files on disk, no plugins required.",
   "long_description": "A local connector that lets Claude work with any Obsidian vault. It reads and writes Markdown files directly on disk, so it works whether or not Obsidian is running and needs no community plugins. Point it at your vault folder and Claude can list, read, search, create and append to notes, follow [[wikilinks]] for backlinks, maintain daily notes, and edit YAML frontmatter. All access is sandboxed to the single folder you configure. Obsidian is a trademark of Dynalist Inc.; this is an independent, unaffiliated connector.",
   "author": {
@@ -28,7 +28,10 @@
       "env": {
         "OBSIDIAN_VAULT_PATH": "${user_config.vault_path}",
         "OBSIDIAN_DAILY_FOLDER": "${user_config.daily_folder}",
-        "OBSIDIAN_DAILY_FORMAT": "${user_config.daily_format}"
+        "OBSIDIAN_DAILY_FORMAT": "${user_config.daily_format}",
+        "OBSIDIAN_WEEKLY_FORMAT": "${user_config.weekly_format}",
+        "OBSIDIAN_MONTHLY_FORMAT": "${user_config.monthly_format}",
+        "OBSIDIAN_TEMPLATES_FOLDER": "${user_config.templates_folder}"
       }
     }
   },
@@ -52,18 +55,50 @@
       "description": "Filename format for daily notes using YYYY, MM and DD tokens.",
       "required": false,
       "default": "YYYY-MM-DD"
+    },
+    "weekly_format": {
+      "type": "string",
+      "title": "Weekly note date format",
+      "description": "Filename format for weekly notes; supports YYYY, WW (ISO week) and [literal] text.",
+      "required": false,
+      "default": "YYYY-[W]WW"
+    },
+    "monthly_format": {
+      "type": "string",
+      "title": "Monthly note date format",
+      "description": "Filename format for monthly notes using YYYY and MM tokens.",
+      "required": false,
+      "default": "YYYY-MM"
+    },
+    "templates_folder": {
+      "type": "string",
+      "title": "Templates folder",
+      "description": "Vault-relative folder holding note templates (used by create_note_from_template).",
+      "required": false,
+      "default": ""
     }
   },
   "tools": [
     { "name": "list_notes", "description": "List Markdown notes, optionally within a folder." },
     { "name": "list_folders", "description": "List sub-folders of the vault or a folder." },
-    { "name": "read_note", "description": "Read the full content of a note." },
-    { "name": "search_notes", "description": "Full-text and tag search across the vault." },
+    { "name": "read_note", "description": "Read a note, or just a heading's section / line range." },
+    { "name": "get_note_info", "description": "Note metadata: dates, size, tags, link and task counts." },
+    { "name": "search_notes", "description": "Text or regex search with tag and path-glob filters." },
+    { "name": "list_tags", "description": "List all tags in the vault with usage counts." },
     { "name": "get_backlinks", "description": "Find notes linking to a target via [[wikilinks]]." },
+    { "name": "get_outgoing_links", "description": "List links a note points to, marking unresolved ones." },
+    { "name": "list_tasks", "description": "List Markdown task checkboxes with file and line." },
     { "name": "create_note", "description": "Create a note with optional frontmatter." },
     { "name": "append_to_note", "description": "Append text to a note, optionally under a heading." },
-    { "name": "append_to_daily_note", "description": "Append an entry to today's (or a given date's) daily note." },
-    { "name": "update_frontmatter", "description": "Set or remove YAML frontmatter fields." }
+    { "name": "edit_note", "description": "Find/replace text or rewrite a heading's section." },
+    { "name": "update_frontmatter", "description": "Set or remove YAML frontmatter fields." },
+    { "name": "toggle_task", "description": "Toggle a task checkbox on a given line." },
+    { "name": "move_note", "description": "Move/rename a note and rewrite backlinks to it." },
+    { "name": "delete_note", "description": "Move a note to the vault's .trash (recoverable)." },
+    { "name": "append_to_daily_note", "description": "Append an entry to a daily note." },
+    { "name": "append_to_periodic_note", "description": "Append to a daily, weekly or monthly note." },
+    { "name": "read_periodic_note", "description": "Read a daily, weekly or monthly note." },
+    { "name": "create_note_from_template", "description": "Create a note from a template with variable substitution." }
   ],
   "compatibility": {
     "claude_desktop": ">=0.10.0",

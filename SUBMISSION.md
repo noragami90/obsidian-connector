@@ -9,7 +9,7 @@ Copy-paste material for `clau.de/desktop-extention-submission`.
 | Field | Value |
 |-------|-------|
 | **Extension name** | Vault Connector for Obsidian |
-| **Version** | 0.1.0 |
+| **Version** | 0.2.0 |
 | **Author** | Anton Shesterov (GitHub: noragami90) |
 | **License** | MIT |
 | **Category** | Productivity / Note-taking & Knowledge management |
@@ -38,22 +38,35 @@ that would escape it.
 
 ---
 
-## Tools (9) — with access classification
+## Tools (20) — with access classification
 
 | Tool | Access | What it does |
 |------|--------|--------------|
 | `list_notes` | read-only | List Markdown notes, optionally within a folder |
 | `list_folders` | read-only | List sub-folders of the vault or a folder |
-| `read_note` | read-only | Read the full content of a note |
-| `search_notes` | read-only | Full-text and `#tag` search across the vault |
+| `read_note` | read-only | Read a note, or just a heading's section / line range |
+| `get_note_info` | read-only | Note metadata: dates, size, tags, link & task counts |
+| `search_notes` | read-only | Text or regex search with `#tag` and path-glob filters |
+| `list_tags` | read-only | List all tags with usage counts |
 | `get_backlinks` | read-only | Find notes linking to a target via `[[wikilinks]]` |
-| `create_note` | write (non-destructive) | Create a note with optional YAML frontmatter; refuses to overwrite unless asked |
-| `append_to_note` | write (non-destructive) | Append text to a note, optionally under a heading |
-| `append_to_daily_note` | write (non-destructive) | Append an entry to today's (or a given date's) daily note |
-| `update_frontmatter` | write (idempotent) | Set or remove YAML frontmatter fields without touching the body |
+| `get_outgoing_links` | read-only | List a note's links, flagging unresolved ones |
+| `list_tasks` | read-only | List task checkboxes with file and line |
+| `read_periodic_note` | read-only | Read a daily/weekly/monthly note |
+| `create_note` | write (non-destructive) | Create a note; refuses to overwrite unless asked |
+| `append_to_note` | write (non-destructive) | Append text, optionally under a heading |
+| `edit_note` | write (non-destructive) | Find/replace text, or rewrite a heading's section |
+| `update_frontmatter` | write (idempotent) | Set or remove YAML frontmatter fields |
+| `toggle_task` | write (non-destructive) | Toggle a task checkbox on a line |
+| `move_note` | write (non-destructive) | Move/rename a note and rewrite backlinks |
+| `append_to_daily_note` | write (non-destructive) | Append to a daily note |
+| `append_to_periodic_note` | write (non-destructive) | Append to a daily/weekly/monthly note |
+| `create_note_from_template` | write (non-destructive) | Create a note from a template |
+| `delete_note` | **write (destructive)** | Move a note to the vault's `.trash` (recoverable) |
 
 Every tool declares a `title` and the appropriate `readOnlyHint` / `destructiveHint` annotation
-in its MCP metadata. No tool deletes notes or performs destructive operations.
+in its MCP metadata. The only destructive tool is `delete_note`, and it performs a recoverable
+move to `.trash` rather than a permanent delete. Also exposes MCP prompts (`summarize_note`,
+`daily_review`) and a `vault-structure` resource.
 
 ---
 

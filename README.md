@@ -15,13 +15,27 @@ that would escape it.
 |------|--------|-------------|
 | `list_notes` | read | List Markdown notes, optionally within a folder |
 | `list_folders` | read | List sub-folders of the vault or a folder |
-| `read_note` | read | Read the full content of a note |
-| `search_notes` | read | Full-text and `#tag` search across the vault |
+| `read_note` | read | Read a note — or just one heading's section / a line range |
+| `get_note_info` | read | Note metadata: dates, size, tags, link & task counts |
+| `search_notes` | read | Text or regex search, with `#tag` and path-glob filters |
+| `list_tags` | read | List every tag in the vault with usage counts |
 | `get_backlinks` | read | Find notes linking to a target via `[[wikilinks]]` |
+| `get_outgoing_links` | read | List links a note points to, flagging unresolved ones |
+| `list_tasks` | read | List task checkboxes (`- [ ]`) with file and line |
 | `create_note` | write | Create a note with optional YAML frontmatter |
 | `append_to_note` | write | Append text to a note, optionally under a heading |
-| `append_to_daily_note` | write | Append an entry to today's (or a given date's) daily note |
+| `edit_note` | write | Find/replace text, or rewrite a heading's section |
 | `update_frontmatter` | write | Set or remove YAML frontmatter fields |
+| `toggle_task` | write | Toggle a task checkbox on a given line |
+| `move_note` | write | Move/rename a note and rewrite `[[wikilinks]]` to it |
+| `delete_note` | write (destructive) | Move a note to the vault's `.trash` (recoverable) |
+| `append_to_daily_note` | write | Append an entry to today's (or a given date's) daily note |
+| `append_to_periodic_note` | write | Append to a daily, weekly or monthly note |
+| `read_periodic_note` | read | Read a daily, weekly or monthly note |
+| `create_note_from_template` | write | Create a note from a template with `{{variable}}` substitution |
+
+Also exposes MCP **prompts** (`summarize_note`, `daily_review`) and a **resource**
+(`obsidian://vault/structure`) describing the vault layout.
 
 ## Configuration
 
@@ -32,7 +46,12 @@ settings when installed as a Desktop Extension):
 |----------|----------|---------|---------|
 | `OBSIDIAN_VAULT_PATH` | yes | — | Absolute path to the vault folder |
 | `OBSIDIAN_DAILY_FOLDER` | no | `` (root) | Vault-relative folder for daily notes |
-| `OBSIDIAN_DAILY_FORMAT` | no | `YYYY-MM-DD` | Daily-note filename format (`YYYY`/`MM`/`DD`) |
+| `OBSIDIAN_DAILY_FORMAT` | no | `YYYY-MM-DD` | Daily-note filename format |
+| `OBSIDIAN_WEEKLY_FOLDER` | no | daily folder | Folder for weekly notes |
+| `OBSIDIAN_WEEKLY_FORMAT` | no | `YYYY-[W]WW` | Weekly-note format (`WW` = ISO week; `[..]` = literal) |
+| `OBSIDIAN_MONTHLY_FOLDER` | no | daily folder | Folder for monthly notes |
+| `OBSIDIAN_MONTHLY_FORMAT` | no | `YYYY-MM` | Monthly-note filename format |
+| `OBSIDIAN_TEMPLATES_FOLDER` | no | `` (root) | Folder holding note templates |
 
 ## Development
 
