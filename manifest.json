@@ -1,0 +1,67 @@
+{
+  "manifest_version": "0.2",
+  "name": "obsidian-connector",
+  "display_name": "Obsidian Connector",
+  "version": "0.1.0",
+  "description": "Read, write and search your Obsidian notes from Claude — works directly with Markdown files on disk, no plugins required.",
+  "long_description": "A local connector that lets Claude work with any Obsidian vault. It reads and writes Markdown files directly on disk, so it works whether or not Obsidian is running and needs no community plugins. Point it at your vault folder and Claude can list, read, search, create and append to notes, follow [[wikilinks]] for backlinks, maintain daily notes, and edit YAML frontmatter. All access is sandboxed to the single folder you configure.",
+  "author": {
+    "name": "Anton"
+  },
+  "license": "MIT",
+  "keywords": ["obsidian", "markdown", "notes", "vault", "knowledge-base"],
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "${user_config.vault_path}",
+        "OBSIDIAN_DAILY_FOLDER": "${user_config.daily_folder}",
+        "OBSIDIAN_DAILY_FORMAT": "${user_config.daily_format}"
+      }
+    }
+  },
+  "user_config": {
+    "vault_path": {
+      "type": "directory",
+      "title": "Vault folder",
+      "description": "The folder of the Obsidian vault Claude should work with. All reads and writes are limited to this folder.",
+      "required": true
+    },
+    "daily_folder": {
+      "type": "string",
+      "title": "Daily notes folder",
+      "description": "Vault-relative folder for daily notes (leave empty for the vault root).",
+      "required": false,
+      "default": ""
+    },
+    "daily_format": {
+      "type": "string",
+      "title": "Daily note date format",
+      "description": "Filename format for daily notes using YYYY, MM and DD tokens.",
+      "required": false,
+      "default": "YYYY-MM-DD"
+    }
+  },
+  "tools": [
+    { "name": "list_notes", "description": "List Markdown notes, optionally within a folder." },
+    { "name": "list_folders", "description": "List sub-folders of the vault or a folder." },
+    { "name": "read_note", "description": "Read the full content of a note." },
+    { "name": "search_notes", "description": "Full-text and tag search across the vault." },
+    { "name": "get_backlinks", "description": "Find notes linking to a target via [[wikilinks]]." },
+    { "name": "create_note", "description": "Create a note with optional frontmatter." },
+    { "name": "append_to_note", "description": "Append text to a note, optionally under a heading." },
+    { "name": "append_to_daily_note", "description": "Append an entry to today's (or a given date's) daily note." },
+    { "name": "update_frontmatter", "description": "Set or remove YAML frontmatter fields." }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}
