@@ -6,9 +6,17 @@
   "description": "Read, write and search your Obsidian vault from Claude — works directly with Markdown files on disk, no plugins required.",
   "long_description": "A local connector that lets Claude work with any Obsidian vault. It reads and writes Markdown files directly on disk, so it works whether or not Obsidian is running and needs no community plugins. Point it at your vault folder and Claude can list, read, search, create and append to notes, follow [[wikilinks]] for backlinks, maintain daily notes, and edit YAML frontmatter. All access is sandboxed to the single folder you configure. Obsidian is a trademark of Dynalist Inc.; this is an independent, unaffiliated connector.",
   "author": {
-    "name": "Anton Shesterov"
+    "name": "Anton Shesterov",
+    "url": "https://github.com/noragami90"
   },
   "license": "MIT",
+  "homepage": "https://github.com/noragami90/obsidian-connector",
+  "documentation": "https://github.com/noragami90/obsidian-connector#readme",
+  "support": "https://github.com/noragami90/obsidian-connector/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noragami90/obsidian-connector"
+  },
   "keywords": ["obsidian", "markdown", "notes", "vault", "knowledge-base"],
   "icon": "icon.png",
   "server": {

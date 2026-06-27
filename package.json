@@ -5,7 +5,16 @@
   "type": "module",
   "license": "MIT",
   "author": {
-    "name": "Anton Shesterov"
+    "name": "Anton Shesterov",
+    "url": "https://github.com/noragami90"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noragami90/obsidian-connector.git"
+  },
+  "homepage": "https://github.com/noragami90/obsidian-connector#readme",
+  "bugs": {
+    "url": "https://github.com/noragami90/obsidian-connector/issues"
   },
   "main": "dist/index.js",
   "bin": {
