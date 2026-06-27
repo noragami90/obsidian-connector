@@ -3,3 +3,5 @@ dist/
 *.mcpb
 *.log
 .DS_Store
+.idea/
+.vscode/

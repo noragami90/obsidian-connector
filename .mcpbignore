@@ -1,0 +1,12 @@
+# The server is bundled into dist/index.js, so node_modules is not needed.
+node_modules/
+src/
+assets/
+esbuild.mjs
+tsconfig.json
+package-lock.json
+.gitignore
+.git/
+.idea/
+.vscode/
+*.mcpb

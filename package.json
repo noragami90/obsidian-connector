@@ -17,8 +17,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc --noEmit && node esbuild.mjs",
     "start": "node dist/index.js",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "pack": "npm run build && npx @anthropic-ai/mcpb pack"
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@anthropic-ai/mcpb": "^1.0.0",
     "@types/node": "^22.0.0",
+    "esbuild": "^0.28.1",
     "sharp": "^0.35.2",
     "typescript": "^5.5.0"
   },
