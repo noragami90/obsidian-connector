@@ -1,12 +1,12 @@
 {
   "manifest_version": "0.2",
-  "name": "obsidian-connector",
-  "display_name": "Obsidian Connector",
+  "name": "vault-connector-for-obsidian",
+  "display_name": "Vault Connector for Obsidian",
   "version": "0.1.0",
-  "description": "Read, write and search your Obsidian notes from Claude — works directly with Markdown files on disk, no plugins required.",
-  "long_description": "A local connector that lets Claude work with any Obsidian vault. It reads and writes Markdown files directly on disk, so it works whether or not Obsidian is running and needs no community plugins. Point it at your vault folder and Claude can list, read, search, create and append to notes, follow [[wikilinks]] for backlinks, maintain daily notes, and edit YAML frontmatter. All access is sandboxed to the single folder you configure.",
+  "description": "Read, write and search your Obsidian vault from Claude — works directly with Markdown files on disk, no plugins required.",
+  "long_description": "A local connector that lets Claude work with any Obsidian vault. It reads and writes Markdown files directly on disk, so it works whether or not Obsidian is running and needs no community plugins. Point it at your vault folder and Claude can list, read, search, create and append to notes, follow [[wikilinks]] for backlinks, maintain daily notes, and edit YAML frontmatter. All access is sandboxed to the single folder you configure. Obsidian is a trademark of Dynalist Inc.; this is an independent, unaffiliated connector.",
   "author": {
-    "name": "Anton"
+    "name": "Anton Shesterov"
   },
   "license": "MIT",
   "keywords": ["obsidian", "markdown", "notes", "vault", "knowledge-base"],

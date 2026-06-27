@@ -8,9 +8,9 @@ Copy-paste material for `clau.de/desktop-extention-submission`.
 
 | Field | Value |
 |-------|-------|
-| **Extension name** | Obsidian Connector |
+| **Extension name** | Vault Connector for Obsidian |
 | **Version** | 0.1.0 |
-| **Author** | Anton (GitHub: noragami90) |
+| **Author** | Anton Shesterov (GitHub: noragami90) |
 | **License** | MIT |
 | **Category** | Productivity / Note-taking & Knowledge management |
 | **Platforms** | macOS, Windows, Linux |
@@ -23,7 +23,9 @@ Copy-paste material for `clau.de/desktop-extention-submission`.
 
 ## Short description (tagline, ~1 line)
 
-Read, write and search your Obsidian notes from Claude — works directly with Markdown files on disk, no plugins required.
+Read, write and search your Obsidian vault from Claude — works directly with Markdown files on disk, no plugins required.
+
+> Independent project, not affiliated with or endorsed by Obsidian. "Obsidian" is a trademark of Dynalist Inc.; used here only to describe compatibility.
 
 ## Long description
 

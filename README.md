@@ -1,8 +1,10 @@
-# Obsidian Connector
+# Vault Connector for Obsidian
 
 A local [MCP](https://modelcontextprotocol.io) connector that lets Claude read, write and
 search any [Obsidian](https://obsidian.md) vault. It works **directly with the Markdown files
 on disk** — no community plugins, and Obsidian does not need to be running.
+
+> Independent project, not affiliated with or endorsed by Obsidian. "Obsidian" is a trademark of Dynalist Inc.
 
 All access is sandboxed to the single vault folder you configure; the server refuses any path
 that would escape it.

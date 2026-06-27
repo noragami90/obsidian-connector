@@ -18,7 +18,7 @@ if (!VAULT_PATH) {
 const vault = new Vault(VAULT_PATH);
 
 const server = new McpServer({
-  name: "obsidian-connector",
+  name: "vault-connector-for-obsidian",
   version: "0.1.0",
 });
 
